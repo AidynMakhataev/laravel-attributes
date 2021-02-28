@@ -9,7 +9,7 @@ use Composer\Autoload\ClassMapGenerator;
 use Illuminate\Support\Facades\Event;
 use ReflectionClass;
 
-final class EventsAttributesRegistrar
+final class EventsAttributesRegistrar implements EventsAttributesRegistrarInterface
 {
     /**
      * @param string[] $directories
