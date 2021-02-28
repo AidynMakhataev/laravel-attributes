@@ -28,7 +28,22 @@ final class EventsAttributesServiceProvider extends ServiceProvider
 
     private function registerEventListeners(): void
     {
+        $registrar = new EventsAttributesRegistrar();
 
+        $registrar->registerDirectories(
+            directories: $this->getDirectories()
+        );
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getDirectories(): array
+    {
+        /** @var string[] $directories */
+        $directories = config('events-attributes.directories');
+
+        return $directories;
     }
 
     private function isEnabled(): bool
