@@ -1,6 +1,9 @@
 {
     "name": "aidynmakhataev/laravel-events-attributes",
     "description": "Auto register event & listeners using PHP attributes",
+    "keywords": [
+        "laravel-events-attributes", "laravel event attributes", "laravel listener attributes", "AidynMakhataev"
+    ],
     "license": "MIT",
     "authors": [
         {
