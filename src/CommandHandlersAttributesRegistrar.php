@@ -12,17 +12,24 @@ final class CommandHandlersAttributesRegistrar extends AbstractAttributesRegistr
 {
     public function registerClass(ReflectionClass $class): void
     {
-        $attributes = $class->getAttributes(CommandHandler::class);
-
-        if (count($attributes) === 0) {
+        if (false === $class->hasMethod('handle')) {
             return;
         }
 
-        /** @var CommandHandler $attribute */
-        $attribute = $attributes[0]->newInstance();
+        $method = $class->getMethod('handle');
 
-        Bus::map([
-            $attribute->command => $class->getName(),
-        ]);
+        $attributes = $method->getAttributes(CommandHandler::class);
+        $parameters = $method->getParameters();
+
+
+        if ($parameters && $attributes) {
+            $type = $parameters[0]->getType();
+
+            $command = $type->getName();
+
+            Bus::map([
+                $command => $class->getName(),
+            ]);
+        }
     }
 }

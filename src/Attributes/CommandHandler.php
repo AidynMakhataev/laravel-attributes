@@ -6,16 +6,7 @@ namespace AidynMakhataev\LaravelAttributes\Attributes;
 
 use Attribute;
 
-#[Attribute(Attribute::TARGET_CLASS)]
+#[Attribute(Attribute::TARGET_METHOD)]
 final class CommandHandler
 {
-    public string $command;
-
-    /**
-     * @param class-string $command
-     */
-    public function __construct(string $command)
-    {
-        $this->command = $command;
-    }
 }
