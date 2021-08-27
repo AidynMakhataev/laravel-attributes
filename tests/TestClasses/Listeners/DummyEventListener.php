@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace AidynMakhataev\EventsAttributes\Tests\TestClasses\Listeners;
+namespace AidynMakhataev\LaravelAttributes\Tests\TestClasses\Listeners;
 
-use AidynMakhataev\EventsAttributes\Attributes\RegisterListener;
-use AidynMakhataev\EventsAttributes\Tests\TestClasses\Events\DummyEvent;
+use AidynMakhataev\LaravelAttributes\Attributes\EventListener;
+use AidynMakhataev\LaravelAttributes\Tests\TestClasses\Events\DummyEvent;
 
 final class DummyEventListener
 {
-    #[RegisterListener]
+    #[EventListener]
     public function handle(DummyEvent $event): void
     {
 
     }
 
-    #[RegisterListener]
+    #[EventListener]
     public function test(DummyEvent $event): void
     {
 

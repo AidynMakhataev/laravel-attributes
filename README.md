@@ -6,12 +6,12 @@ This package provides ```#[RegisterListener]``` attribute to automatically regis
 
 namespace App\Listeners;
 
-use AidynMakhataev\EventsAttributes\Attributes\RegisterListener;
+use AidynMakhataev\EventsAttributes\Attributes\EventListener;
 use App\Events\OrderShipped;
 
 class SendShipmentNotification
 {
-    #[RegisterListener]
+    #[EventListener]
     public function handle(OrderShipped $event)
     {
         //

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace AidynMakhataev\EventsAttributes\Tests;
+namespace AidynMakhataev\LaravelAttributes\Tests;
 
-use AidynMakhataev\EventsAttributes\EventsAttributesRegistrar;
+use AidynMakhataev\LaravelAttributes\EventListenersAttributesRegistrar;
 use Orchestra\Testbench\TestCase as Orchestra;
-use AidynMakhataev\EventsAttributes\EventsAttributesServiceProvider;
+use AidynMakhataev\LaravelAttributes\LaravelAttributesServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
-    protected EventsAttributesRegistrar $registrar;
+    protected EventListenersAttributesRegistrar $registrar;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->registrar = new EventsAttributesRegistrar();
+        $this->registrar = new EventListenersAttributesRegistrar();
     }
 
     protected function getTestDirectories(): array
@@ -29,7 +29,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app): array
     {
         return [
-            EventsAttributesServiceProvider::class,
+            LaravelAttributesServiceProvider::class,
         ];
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AidynMakhataev\EventsAttributes\Tests\TestClasses\Events;
+namespace AidynMakhataev\LaravelAttributes\Tests\TestClasses\Events;
 
 final class DummyEvent
 {

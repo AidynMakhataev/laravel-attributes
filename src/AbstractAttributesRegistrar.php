@@ -2,14 +2,12 @@
 
 declare(strict_types=1);
 
-namespace AidynMakhataev\EventsAttributes;
+namespace AidynMakhataev\LaravelAttributes;
 
-use AidynMakhataev\EventsAttributes\Attributes\RegisterListener;
 use Composer\Autoload\ClassMapGenerator;
-use Illuminate\Support\Facades\Event;
 use ReflectionClass;
 
-final class EventsAttributesRegistrar implements EventsAttributesRegistrarInterface
+abstract class AbstractAttributesRegistrar implements AttributesRegistrarInterface
 {
     /**
      * @param string[] $directories
@@ -45,31 +43,6 @@ final class EventsAttributesRegistrar implements EventsAttributesRegistrarInterf
             $reflectionClass = new ReflectionClass($class);
 
             $this->registerClass($reflectionClass);
-        }
-    }
-
-    /**
-     * @param ReflectionClass $class
-     * @psalm-suppress UndefinedMethod
-     */
-    private function registerClass(ReflectionClass $class): void
-    {
-        foreach ($class->getMethods() as $method) {
-            $attributes = $method->getAttributes(RegisterListener::class);
-
-            $parameters = $method->getParameters();
-
-            if ($attributes && $parameters) {
-                $type = $parameters[0]->getType();
-
-                /** @var string $eventClass */
-                $eventClass = $type?->getName();
-
-                Event::listen(
-                    $eventClass,
-                    \sprintf("%s@%s", $method->class, $method->name)
-                );
-            }
         }
     }
 }

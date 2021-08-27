@@ -1,9 +1,9 @@
 <?php
 
-namespace AidynMakhataev\EventsAttributes\Tests;
+namespace AidynMakhataev\LaravelAttributes\Tests;
 
-use AidynMakhataev\EventsAttributes\Tests\TestClasses\Events\DummyEvent;
-use AidynMakhataev\EventsAttributes\Tests\TestClasses\Listeners\DummyEventListener;
+use AidynMakhataev\LaravelAttributes\Tests\TestClasses\Events\DummyEvent;
+use AidynMakhataev\LaravelAttributes\Tests\TestClasses\Listeners\DummyEventListener;
 use Illuminate\Support\Facades\Event;
 
 final class EventsAttributesRegistrarTest extends TestCase

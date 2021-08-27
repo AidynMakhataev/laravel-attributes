@@ -1,8 +1,8 @@
 {
-    "name": "aidynmakhataev/laravel-events-attributes",
+    "name": "aidynmakhataev/laravel-attributes",
     "description": "Auto register event & listeners using PHP attributes",
     "keywords": [
-        "laravel-events-attributes", "laravel event attributes", "laravel listener attributes", "AidynMakhataev"
+        "laravel-attributes", "laravelattributes", "laravel listener attributes", "AidynMakhataev"
     ],
     "license": "MIT",
     "authors": [
@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "AidynMakhataev\\EventsAttributes\\": "src"
+            "AidynMakhataev\\LaravelAttributes\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AidynMakhataev\\EventsAttributes\\Tests\\": "tests"
+            "AidynMakhataev\\LaravelAttributes\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,7 +44,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AidynMakhataev\\EventsAttributes\\EventsAttributesServiceProvider"
+                "AidynMakhataev\\LaravelAttributes\\LaravelAttributesServiceProvider"
             ]
         }
     }

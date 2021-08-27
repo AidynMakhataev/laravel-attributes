@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AidynMakhataev\EventsAttributes;
+namespace AidynMakhataev\LaravelAttributes;
 
-interface EventsAttributesRegistrarInterface
+use ReflectionClass;
+
+interface AttributesRegistrarInterface
 {
     /**
      * @param string[] $directories
@@ -15,4 +17,6 @@ interface EventsAttributesRegistrarInterface
      * @param string[] $classes
      */
     public function registerClasses(array $classes): void;
+
+    public function registerClass(ReflectionClass $class): void;
 }
