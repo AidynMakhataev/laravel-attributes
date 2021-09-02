@@ -18,6 +18,7 @@ final class LaravelAttributesServiceProvider extends ServiceProvider
 
         $this->registerEventListeners();
         $this->registerCommandHandlers();
+        $this->registerRoutes();
     }
 
     public function register(): void
@@ -55,6 +56,24 @@ final class LaravelAttributesServiceProvider extends ServiceProvider
         $directories = config('attributes.command_bus.directories');
 
         $registrar = new CommandHandlersAttributesRegistrar();
+
+        $registrar->registerDirectories(
+            directories: $directories
+        );
+    }
+
+    public function registerRoutes(): void
+    {
+        $isEnabled = (bool) config('attributes.routing.enabled');
+
+        if (false === $isEnabled) {
+            return;
+        }
+
+        /** @var string[] $directories */
+        $directories = config('attributes.routing.directories');
+
+        $registrar = new RouteAttributesRegistrar(app()->router);
 
         $registrar->registerDirectories(
             directories: $directories
