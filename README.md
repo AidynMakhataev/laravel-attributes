@@ -3,6 +3,72 @@
 This package provides php attributes automatically register Laravel routes, event listeners and command bus handlers. Here's a quick example:
 
 
+## Requirements
+
+- PHP ^8.0
+- Laravel ^8.0
+
+## Installation
+
+You can install the package via composer:
+
+```bash
+composer require aidynmakhataev/laravel-attributes
+```
+
+You can publish the config file with:
+```bash
+php artisan vendor:publish --provider="AidynMakhataev\LaravelAttributes\LaravelAttributesServiceProvider" --tag="config"
+```
+
+This is the contents of the published config file:
+
+```php
+return [
+    'events' => [
+        /*
+         * Automatic registration of listeners will only happen if this setting is `true`
+         */
+        'enabled'       => true,
+
+        /*
+         * Listeners in these directories that have attributes will automatically be registered.
+         */
+        'directories'   => [
+            base_path('app/Listeners')
+        ]
+    ],
+
+    'command_bus' => [
+        /*
+         * Automatic registration of command handlers will only happen if this setting is `true`
+         */
+        'enabled'       => true,
+
+        /*
+         * Handlers in these directories that have attributes will automatically be registered.
+         */
+        'directories'   => [
+            base_path('app/CommandHandlers')
+        ],
+    ],
+
+    'routing' => [
+        /*
+         * Automatic registration of routes will only happen if this setting is `true`
+         */
+        'enabled'       => true,
+
+        /*
+         * Controllers in these directories that have attributes will automatically be registered.
+         */
+        'directories'   => [
+            base_path('app/Http/Controllers')
+        ],
+    ],
+];
+```
+
 # Usage
 
 The package provides several annotations that should be put on your methods.
@@ -83,72 +149,6 @@ This attribute will automatically register this route by executing following com
 
 ```php
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store')->middlewares(['auth']);
-```
-
-## Requirements
-
-- PHP ^8.0
-- Laravel ^8.0
-
-## Installation
-
-You can install the package via composer:
-
-```bash
-composer require aidynmakhataev/laravel-attributes
-```
-
-You can publish the config file with:
-```bash
-php artisan vendor:publish --provider="AidynMakhataev\LaravelAttributes\LaravelAttributesServiceProvider" --tag="config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-    'events' => [
-        /*
-         * Automatic registration of listeners will only happen if this setting is `true`
-         */
-        'enabled'       => true,
-
-        /*
-         * Listeners in these directories that have attributes will automatically be registered.
-         */
-        'directories'   => [
-            base_path('app/Listeners')
-        ]
-    ],
-
-    'command_bus' => [
-        /*
-         * Automatic registration of command handlers will only happen if this setting is `true`
-         */
-        'enabled'       => true,
-
-        /*
-         * Handlers in these directories that have attributes will automatically be registered.
-         */
-        'directories'   => [
-            base_path('app/CommandHandlers')
-        ],
-    ],
-
-    'routing' => [
-        /*
-         * Automatic registration of routes will only happen if this setting is `true`
-         */
-        'enabled'       => true,
-
-        /*
-         * Controllers in these directories that have attributes will automatically be registered.
-         */
-        'directories'   => [
-            base_path('app/Http/Controllers')
-        ],
-    ],
-];
 ```
 
 ## Testing
