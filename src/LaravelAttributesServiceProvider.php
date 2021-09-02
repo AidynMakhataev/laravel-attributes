@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AidynMakhataev\LaravelAttributes;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 final class LaravelAttributesServiceProvider extends ServiceProvider
@@ -62,6 +63,9 @@ final class LaravelAttributesServiceProvider extends ServiceProvider
         );
     }
 
+    /**
+     * @psalm-suppress UndefinedInterfaceMethod
+     */
     public function registerRoutes(): void
     {
         $isEnabled = (bool) config('attributes.routing.enabled');
@@ -77,7 +81,10 @@ final class LaravelAttributesServiceProvider extends ServiceProvider
         /** @var string[] $directories */
         $directories = config('attributes.routing.directories');
 
-        $registrar = new RouteAttributesRegistrar(app()->router);
+        /** @var Router $router */
+        $router = app()->router;
+
+        $registrar = new RouteAttributesRegistrar($router);
 
         $registrar->registerDirectories(
             directories: $directories

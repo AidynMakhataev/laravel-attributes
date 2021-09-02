@@ -1,6 +1,6 @@
 {
     "name": "aidynmakhataev/laravel-attributes",
-    "description": "Auto register event & listeners using PHP attributes",
+    "description": "Auto register laravel event listeners, command handlers and routes using PHP attributes",
     "keywords": [
         "laravel-attributes", "laravelattributes", "laravel listener attributes", "AidynMakhataev"
     ],
@@ -13,7 +13,9 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/events": "^8.0"
+        "illuminate/events": "^8.0",
+        "illuminate/bus": "^8.0",
+        "illuminate/routing": "^8.0"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",

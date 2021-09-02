@@ -23,7 +23,6 @@ final class RouteAttributesRegistrar extends AbstractAttributesRegistrar
                 return;
             }
 
-            /** @var Route $attributeClass */
             $attributeClass = $attributes[0]->newInstance();
 
             $action = $method->getName() === '__invoke' ? $class->getName() : [$class->getName(), $method->getName()];

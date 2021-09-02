@@ -7,6 +7,7 @@ namespace AidynMakhataev\LaravelAttributes;
 use AidynMakhataev\LaravelAttributes\Attributes\CommandHandler;
 use Illuminate\Support\Facades\Bus;
 use ReflectionClass;
+use ReflectionNamedType;
 
 final class CommandHandlersAttributesRegistrar extends AbstractAttributesRegistrar
 {
@@ -23,9 +24,11 @@ final class CommandHandlersAttributesRegistrar extends AbstractAttributesRegistr
 
 
         if ($parameters && $attributes) {
+            /** @var ReflectionNamedType|null $type */
             $type = $parameters[0]->getType();
 
-            $command = $type->getName();
+            /** @var string $command */
+            $command = $type?->getName();
 
             Bus::map([
                 $command => $class->getName(),
