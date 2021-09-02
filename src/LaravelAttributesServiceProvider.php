@@ -70,6 +70,10 @@ final class LaravelAttributesServiceProvider extends ServiceProvider
             return;
         }
 
+        if ($this->app->routesAreCached()) {
+            return;
+        }
+
         /** @var string[] $directories */
         $directories = config('attributes.routing.directories');
 
