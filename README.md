@@ -1,6 +1,6 @@
 # Laravel Attributes
 
-This package provides php attributes automatically register Laravel routes, event listeners and command bus handlers. Here's a quick example:
+This package provides php attributes automatically register Laravel routes, event listeners and command bus handlers. 
 
 
 ## Requirements
