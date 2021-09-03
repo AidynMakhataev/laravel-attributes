@@ -27,7 +27,12 @@ final class RouteAttributesRegistrar extends AbstractAttributesRegistrar
 
             $action = $method->getName() === '__invoke' ? $class->getName() : [$class->getName(), $method->getName()];
 
-            $route = $this->router->match($attributeClass->methods, $attributeClass->path, $action);
+            $route = $this->router
+                ->addRoute($attributeClass->methods, $attributeClass->path, $action);
+
+            if ($attributeClass->name) {
+                $route->name($attributeClass->name);
+            }
 
             if ($attributeClass->middlewares) {
                 $route->middleware($attributeClass->middlewares);
