@@ -20,7 +20,7 @@ final class RouteAttributesRegistrar extends AbstractAttributesRegistrar
             $attributes = $method->getAttributes(Route::class);
 
             if (count($attributes) === 0) {
-                return;
+                continue;
             }
 
             $attributeClass = $attributes[0]->newInstance();
